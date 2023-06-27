@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const shape = document.createElement('div');
     shape.classList.add('shape', `shape-${i % 3 + 1}`);
     shape.style.animationDelay = `${i * 0.1}s`;
+    shape.style.top = `${getRandomPosition()}vh`;
+    shape.style.left = `${getRandomPosition()}vw`;
     shapesContainer.appendChild(shape);
   }
 
@@ -18,4 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
       audio.pause();
     }
   });
+
+  function getRandomPosition() {
+    return Math.random() * 80; // Adjust the range as needed
+  }
 });
