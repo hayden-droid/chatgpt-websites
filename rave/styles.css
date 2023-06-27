@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+#rave {
+  text-align: center;
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: colorChange 3s linear infinite;
+}
+
+@keyframes colorChange {
+  0%, 100% { color: red; }
+  25% { color: blue; }
+  50% { color: yellow; }
+  75% { color: green; }
+}
+
+#shapes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.shape {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: bounce 1s infinite alternate;
+}
+
+.shape.shape-1 {
+  background-color: #ff004d;
+  top: 10%;
+  left: 10%;
+}
+
+.shape.shape-2 {
+  background-color: #00ffea;
+  top: 30%;
+  left: 60%;
+}
+
+.shape.shape-3 {
+  background-color: #ffec00;
+  top: 70%;
+  left: 30%;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
