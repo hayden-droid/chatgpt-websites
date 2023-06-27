@@ -154,3 +154,56 @@ body {
 .lightning:after {
   transform: translate(-50%, -50%) rotate(45deg);
 }
+/* ... Existing CSS code ... */
+
+#rave-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#rave {
+  font-size: 8rem;
+  text-transform: uppercase;
+  color: white;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#shooting-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  opacity: 0;
+  pointer-events: none;
+  animation: shootingStar 2s linear infinite;
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  5% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  35% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
