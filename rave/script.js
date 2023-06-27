@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
   const shapesContainer = document.getElementById('shapes-container');
-  const lightning = document.getElementById('lightning');
+  const lightningContainer = document.createElement('div');
+  lightningContainer.id = 'lightning-container';
+  document.body.appendChild(lightningContainer);
   const numberOfShapes = 30;
   const audio = document.getElementById('audio');
 
@@ -25,9 +27,12 @@ window.addEventListener('DOMContentLoaded', () => {
   // Trigger lightning flash
   setInterval(() => {
     if (Math.random() < 0.2) {
-      lightning.style.opacity = '1';
-    } else {
-      lightning.style.opacity = '0';
+      const lightningFlash = document.createElement('div');
+      lightningFlash.classList.add('lightning');
+      lightningContainer.appendChild(lightningFlash);
+      setTimeout(() => {
+        lightningContainer.removeChild(lightningFlash);
+      }, 300);
     }
   }, 3000);
 
