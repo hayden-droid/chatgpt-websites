@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
   const shapesContainer = document.getElementById('shapes-container');
+  const lightning = document.getElementById('lightning');
   const numberOfShapes = 30;
   const audio = document.getElementById('audio');
 
@@ -20,6 +21,15 @@ window.addEventListener('DOMContentLoaded', () => {
       audio.pause();
     }
   });
+
+  // Trigger lightning flash
+  setInterval(() => {
+    if (Math.random() < 0.2) {
+      lightning.style.opacity = '1';
+    } else {
+      lightning.style.opacity = '0';
+    }
+  }, 3000);
 
   function getRandomPosition() {
     return Math.random() * 80; // Adjust the range as needed
