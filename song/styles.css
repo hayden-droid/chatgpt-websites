@@ -1,0 +1,26 @@
+.colour_1 {
+  background: rgb(49, 7, 11);
+}
+p {
+  padding-top: 200px;
+  color: rgb(222, 30, 48);
+  font-size: 50px;
+  text-align: center;
+}
+p span::before {
+  content: '';
+  color: #ff85a2;
+  background: #8b4600;
+  border-radius: 15px;
+  border: 5px solid #d80000;
+  animation: lyrics 5s infinite;
+  box-shadow: 0 0 19px 
+}
+@keyframes lyrics {
+  0% {
+    content: 'machine';
+  }
+  50% {
+    content: 'machine';
+  }
+}
