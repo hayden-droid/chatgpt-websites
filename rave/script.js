@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const shapesContainer = document.getElementById('shapes-container');
   const raveContainer = document.getElementById('rave-container');
   const raveText = document.getElementById('rave');
+  const raveLetters = Array.from(raveText.getElementsByTagName('span'));
   const shootingStar = document.getElementById('shooting-star');
   const numberOfShapes = 30;
   const audio = document.getElementById('audio');
@@ -26,45 +27,41 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Trigger shooting star
   setTimeout(() => {
-    raveText.style.opacity = '1';
+    raveLetters.forEach(letter => {
+      letter.style.opacity = '0';
+    });
+
     shootingStar.style.opacity = '1';
     shootingStar.addEventListener('animationend', () => {
-      raveText.style.opacity = '0';
+      raveLetters.forEach(letter => {
+        letter.style.opacity = '1';
+      });
       animateRaveText();
     });
   }, 2000);
 
   function animateRaveText() {
-    const letters = raveText.innerText.split('');
-    raveText.innerHTML = '';
-
-    letters.forEach(letter => {
-      const span = document.createElement('span');
-      span.innerText = letter;
-      raveText.appendChild(span);
-    });
-
-    const spanLetters = raveText.querySelectorAll('span');
-
-    spanLetters.forEach((span, index) => {
+    raveLetters.forEach(letter => {
       const delay = Math.random() * 2 + 1; // Random delay between 1 and 3 seconds
       const x = Math.random() * 100 - 50; // Random x position between -50 and 50
       const y = Math.random() * 100 - 50; // Random y position between -50 and 50
 
-      span.style.transition = `transform ${delay}s`;
-      span.style.transform = `translate(${x}vw, ${y}vh)`;
-      span.style.opacity = '0';
+      letter.style.transition = `transform ${delay}s, opacity ${delay}s`;
+      letter.style.transform = `translate(${x}vw, ${y}vh)`;
+      letter.style.opacity = '0';
 
       setTimeout(() => {
-        span.style.transition = 'none';
-        span.style.transform = 'translate(0, 0)';
-        span.style.opacity = '1';
+        letter.style.transition = 'none';
+        letter.style.transform = 'translate(0, 0)';
+        letter.style.opacity = '1';
       }, delay * 1000);
     });
 
     setTimeout(() => {
-      raveText.innerHTML = raveText.innerText;
-    }, (letters.length + 1) * 1000); // Delay before rejoining the letters
+      raveLetters.forEach(letter => {
+        letter.style.transition = '';
+      });
+    }, (raveLetters.length + 1) * 1000); // Delay before rejoining the letters
   }
 
   function getRandomPosition() {
