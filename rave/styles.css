@@ -172,6 +172,11 @@ body {
   transition: opacity 1s;
 }
 
+#rave span {
+  display: inline-block;
+  transition: transform 1s, opacity 1s;
+}
+
 #shooting-star {
   position: absolute;
   top: 50%;
